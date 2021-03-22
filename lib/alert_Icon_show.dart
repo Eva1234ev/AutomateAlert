@@ -1,7 +1,7 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'alert_type_attribute.dart';
 
+// ignore: must_be_immutable
 class AlertIconWidget extends StatefulWidget {
   AlertTypeAttribute alertAttribute;
 

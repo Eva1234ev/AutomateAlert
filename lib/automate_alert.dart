@@ -87,13 +87,15 @@ class AlertNoServerAutoDialog {
 
         break;
       case AlertType.Info:
-        alertTypeAttribute = AlertTypeAttribute.fromJson(
-            {"alertIcon": Icons.info, "alertColor": Color(0xFF5C6BC0)});
+        alertTypeAttribute = AlertTypeAttribute.fromJson({
+          "alertIcon": Icons.help_outlined,
+          "alertColor": Color(0xFF5C6BC0)
+        });
 
         break;
       case AlertType.Warning:
         alertTypeAttribute = AlertTypeAttribute.fromJson(
-            {"alertIcon": Icons.warning, "alertColor": Color(0xFFF9A825)});
+            {"alertIcon": Icons.info, "alertColor": Color(0xFFF9A825)});
 
         break;
       default:

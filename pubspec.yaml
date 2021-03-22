@@ -1,8 +1,8 @@
 name: automate_alert
 description: A new Flutter package which helps developers create autoamted closed pop up alert
 version: 0.0.1
-author:
-homepage:
+author: Eva Abrahamyan<eva.abrahamyan@gmail.com>
+homepage: https://github.com/Eva1234ev/AutomateAlert
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
