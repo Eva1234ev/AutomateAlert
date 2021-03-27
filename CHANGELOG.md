@@ -1,3 +1,3 @@
 ## [0.0.1] - Release
 
-* TODO: Describe initial release.
+* A customizable automated closed pop up alert.

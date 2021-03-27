@@ -3,10 +3,11 @@ library automate_alert;
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'alert_type_attribute.dart';
-import 'alert_text_show.dart';
+import 'alert_slow_show.dart';
 import 'alert_Icon_show.dart';
 
 enum AlertType { Error, Success, Warning, Info }
+enum AlertAnimateType { SizeAnimate, SlowAppear }
 
 class AlertNoServerAutoDialog {
   final BuildContext context;
@@ -17,13 +18,16 @@ class AlertNoServerAutoDialog {
 
   final AlertType alertType;
 
+  final AlertAnimateType alertAnimateType;
+
   final int showDuration;
 
   AlertNoServerAutoDialog(
       {@required this.context,
       this.message,
       this.subMessage = '',
-      this.alertType = AlertType.Info,
+      this.alertType = AlertType.Error,
+      this.alertAnimateType = AlertAnimateType.SlowAppear,
       this.showDuration = 2});
 
   Timer _timer;
@@ -31,7 +35,7 @@ class AlertNoServerAutoDialog {
   Future show() => showDialog(
           context: context,
           builder: (BuildContext builderContext) {
-            getIconResult(alertType);
+            _getIconResult(alertType);
             _timer = Timer(Duration(seconds: showDuration), () {
               Navigator.of(context).pop();
             });
@@ -40,8 +44,8 @@ class AlertNoServerAutoDialog {
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
-                  AlertIconWidget(alertTypeAttribute),
-                  TextShow(
+                  _getAnimate(alertAnimateType),
+                  SlowShow(
                     child: Text(message,
                         maxLines: 4,
                         textAlign: TextAlign.center,
@@ -51,22 +55,19 @@ class AlertNoServerAutoDialog {
                           color: alertTypeAttribute.alertColor,
                           fontWeight: FontWeight.bold,
                         )),
-                    delay: 2,
                   ),
                   Container(height: 10),
                   subMessage.isNotEmpty
-                      ? TextShow(
+                      ? SlowShow(
                           child: Text(
-                            subMessage,
-                            maxLines: 4,
-                            textAlign: TextAlign.center,
-                            style: new TextStyle(
-                              fontSize: 14.0,
-                              color: new Color(0xFF212121),
-                            ),
+                          subMessage,
+                          maxLines: 4,
+                          textAlign: TextAlign.center,
+                          style: new TextStyle(
+                            fontSize: 14.0,
+                            color: new Color(0xFF212121),
                           ),
-                          delay: 200,
-                        )
+                        ))
                       : Container(),
                 ]));
           }).then((val) {
@@ -75,7 +76,7 @@ class AlertNoServerAutoDialog {
         }
       });
 
-  void getIconResult(AlertType type) {
+  void _getIconResult(AlertType type) {
     switch (type) {
       case AlertType.Error:
         alertTypeAttribute = AlertTypeAttribute.fromJson(
@@ -103,6 +104,20 @@ class AlertNoServerAutoDialog {
           "alertIcon": Icons.account_circle,
           "alertColor": Color(0xFFEA80FC)
         });
+    }
+  }
+
+  Widget _getAnimate(AlertAnimateType type) {
+    switch (type) {
+      case AlertAnimateType.SizeAnimate:
+        return AlertIconWidget(alertTypeAttribute);
+        break;
+      case AlertAnimateType.SlowAppear:
+        return SlowShow(
+          child: Icon(alertTypeAttribute.alertIcon,
+              color: alertTypeAttribute.alertColor, size: 40),
+        );
+        break;
     }
   }
 }

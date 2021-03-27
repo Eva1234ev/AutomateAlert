@@ -1,17 +1,17 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 
-class TextShow extends StatefulWidget {
+class SlowShow extends StatefulWidget {
   final Widget child;
   final int delay;
 
-  TextShow({@required this.child, this.delay});
+  SlowShow({@required this.child, this.delay});
 
   @override
-  _TextShowState createState() => _TextShowState();
+  _SlowShowState createState() => _SlowShowState();
 }
 
-class _TextShowState extends State<TextShow> with TickerProviderStateMixin {
+class _SlowShowState extends State<SlowShow> with TickerProviderStateMixin {
   AnimationController _animController;
   Animation<Offset> _animOffset;
 
