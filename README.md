@@ -1,14 +1,21 @@
 # automate_alert
 
-A new Flutter package which helps developers create autoamted closed pop up alert
+A new Flutter package which helps developers create automated closed pop up alert
+ 
+
+<img src="https://github.com/Eva1234ev/AutomateAlert/blob/master/demo1.gif?raw=true" width="270"> <img src="https://github.com/Eva1234ev/AutomateAlert/blob/master/demo2.gif?raw=true" width="270">
+
+
+
+## Features
+
+- Adding buttons dynamically (as much as you want)
+- Predefined beautiful alert styles (success, error, warning, info)
+- Set animation duration
+- Reusable alert styles
+
+## Usage
+
 
 ## Getting Started
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
-
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
